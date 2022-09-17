@@ -12,5 +12,3 @@ word_freq = {
              
              }
 
-print("  -------MENU------")
-print(" a – Add travel log \n d – Remove travel log \n u – Update travel log \n o – Output entire log in console \n s – Save travel log to database \n q – Quit")
