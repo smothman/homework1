@@ -49,3 +49,13 @@ while(1):
 
         # you must create a Cursor object. It will let
         #  you execute all the queries you need
+        cur = db.cursor()
+        for i in range(len(marks)):
+            sql = ("INSERT INTO CIS3368.log(log_year, log_comment,revisit) VALUES (%s, %s,%s)", (res[i], marks[str(res[i])][0], marks[str(res[i])][1]))
+            cur.execute(*sql)
+            db.commit()
+        marks={}
+    elif(x=='q'):
+        print("Quit")
+        break;
+        
