@@ -14,3 +14,38 @@ word_freq = {
 
 print("  -------MENU------")
 print(" a – Add travel log \n d – Remove travel log \n u – Update travel log \n o – Output entire log in console \n s – Save travel log to database \n q – Quit")
+
+
+while(1):
+    x = input("Selected option is ")
+    if(x=='a'):
+        year = input("Enter Year: ")
+        marks[year.title()] = word_freq[year]
+        print("What you see: ",word_freq[year][0],"\nYou want to visit again: ",word_freq[year][1])
+
+    elif(x=='d'):
+        delete = input("Enter Year: ")
+        marks.pop(delete)
+        print("successfully Deleted")
+    elif(x=='u'):
+        update = input("Enter the year:  ")
+        revisit = input("Update the Revisit:  ")
+        marks[update][1]=revisit
+    elif(x=='o'):
+        print(marks)
+
+    elif(x=='s'):
+        def getList(dict):
+            list = []
+            for key in dict.keys():
+                list.append(key)  
+            return list
+        b=getList(marks)
+        res = [eval(i) for i in b]
+        db = mysql.connector.connect(host="cis3368dall.cmjen6ln1nx7.us-east-2.rds.amazonaws.com",    # your host, usually localhost
+                             user="admin",         # your username
+                             passwd="pakistan123",  # your password
+                             db="CIS3368")        # name of the data base
+
+        # you must create a Cursor object. It will let
+        #  you execute all the queries you need
